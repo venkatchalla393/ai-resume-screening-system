@@ -1,0 +1,262 @@
+# Modern `index.html` for AI Resume Screening System
+
+Replace your current `templates/index.html` with this complete code.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Screening System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #2563eb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .main-card{
+            width: 750px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0px 10px 40px rgba(0,0,0,0.4);
+            animation: fadeIn 1s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @keyframes fadeIn {
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to{
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        .title{
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle{
+            text-align: center;
+            color: #dbeafe;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+
+        .form-label{
+            color: white;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .form-control{
+            border-radius: 12px;
+            padding: 14px;
+            border: none;
+            box-shadow: none;
+        }
+
+        textarea{
+            resize: none;
+        }
+
+        .upload-box{
+            background: rgba(255,255,255,0.15);
+            border: 2px dashed rgba(255,255,255,0.4);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .upload-box:hover{
+            transform: scale(1.02);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .upload-icon{
+            font-size: 50px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .btn-custom{
+            width: 100%;
+            background: linear-gradient(to right, #2563eb, #06b6d4);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover{
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, #1d4ed8, #0891b2);
+        }
+
+        .features{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .feature-card{
+            flex: 1;
+            background: rgba(255,255,255,0.12);
+            padding: 18px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover{
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .feature-card i{
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h5{
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        @media(max-width: 768px){
+
+            .main-card{
+                width: 95%;
+                padding: 25px;
+            }
+
+            .features{
+                flex-direction: column;
+            }
+
+            .title{
+                font-size: 30px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main-card">
+
+        <h1 class="title">
+            AI Resume Screening
+        </h1>
+
+        <p class="subtitle">
+            Upload your resume and compare it with job descriptions using AI & NLP
+        </p>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            <div class="upload-box">
+
+                <i class="bi bi-cloud-arrow-up-fill upload-icon"></i>
+
+                <input
+                type="file"
+                class="form-control"
+                name="resume"
+                required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Enter Job Description
+                </label>
+
+                <textarea
+                class="form-control"
+                name="job_description"
+                rows="7"
+                placeholder="Example: Looking for Python, SQL, Flask, Machine Learning, NLP skills..."
+                required></textarea>
+
+            </div>
+
+            <button type="submit" class="btn-custom">
+                <i class="bi bi-search"></i>
+                Analyze Resume
+            </button>
+
+        </form>
+
+        <div class="features">
+
+            <div class="feature-card">
+                <i class="bi bi-file-earmark-text"></i>
+                <h5>Resume Parsing</h5>
+            </div>
+
+            <div class="feature-card">
+                <i class="bi bi-bar-chart-fill"></i>
+                <h5>ATS Matching</h5>
+            </div>
+
+            <div class="feature-card">
+                <i class="bi bi-cpu-fill"></i>
+                <h5>AI Skill Analysis</h5>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
